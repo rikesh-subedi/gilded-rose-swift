@@ -2,21 +2,18 @@
 //  GildedRoseTests.swift
 //  GildedRoseTests
 //
-//  Created by Tom Heinan on 8/31/15.
-//  Copyright © 2015 Tom Heinan. All rights reserved.
+//  Created by Subedi, Rikesh on 25/04/18.
+//  Copyright © 2018 Tom Heinan. All rights reserved.
 //
 
 import XCTest
 @testable import GildedRose
-
 class GildedRoseTests: XCTestCase {
-    
-    // MARK: Normal Items
     
     func testUpdateQuantityWithNormalItem() {
         let input = [Item(name: "+5 Dexterity Vest", sellIn: 10, quality: 20)]
         let expectedOutput = [Item(name: "+5 Dexterity Vest", sellIn: 9, quality: 19)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -24,7 +21,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithMultipleNormalItems() {
         let input = [Item(name: "Wirt's Third Leg", sellIn: 30, quality: 1), Item(name: "Drakefire Amulet", sellIn: 5, quality: 5)]
         let expectedOutput = [Item(name: "Wirt's Third Leg", sellIn: 29, quality: 0), Item(name: "Drakefire Amulet", sellIn: 4, quality: 4)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -32,7 +29,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithNormalItemOnSellDate() {
         let input = [Item(name: "Periapt of Vitality", sellIn: 0, quality: 7)]
         let expectedOutput = [Item(name: "Periapt of Vitality", sellIn: -1, quality: 5)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -40,7 +37,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithNormalItemAfterSellDate() {
         let input = [Item(name: "Skull of Gul'dan", sellIn: -10, quality: 50)]
         let expectedOutput = [Item(name: "Skull of Gul'dan", sellIn: -11, quality: 48)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -48,7 +45,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithNormalItemOfZeroQuality() {
         let input = [Item(name: "Khadgar's Whisker", sellIn: -10, quality: 0)]
         let expectedOutput = [Item(name: "Khadgar's Whisker", sellIn: -11, quality: 0)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -58,7 +55,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrie() {
         let input = [Item(name: "Aged Brie", sellIn: 10, quality: 15)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: 9, quality: 16)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -66,7 +63,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieAtMaxQuality() {
         let input = [Item(name: "Aged Brie", sellIn: 10, quality: 50)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: 9, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -74,7 +71,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieOnSellDate() {
         let input = [Item(name: "Aged Brie", sellIn: 0, quality: 15)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -1, quality: 17)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -82,7 +79,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieOnSellDateNearMaxQuality() {
         let input = [Item(name: "Aged Brie", sellIn: 0, quality: 49)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -1, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -90,7 +87,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieOnSellDateAtMaxQuality() {
         let input = [Item(name: "Aged Brie", sellIn: 0, quality: 50)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -1, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -98,7 +95,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieAfterSellDate() {
         let input = [Item(name: "Aged Brie", sellIn: -10, quality: 15)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -11, quality: 17)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -106,7 +103,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieAfterSellDateNearMaxQuality() {
         let input = [Item(name: "Aged Brie", sellIn: -10, quality: 49)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -11, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -114,7 +111,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithAgedBrieAfterSellDateAtMaxQuality() {
         let input = [Item(name: "Aged Brie", sellIn: -10, quality: 50)]
         let expectedOutput = [Item(name: "Aged Brie", sellIn: -11, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items: input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -124,7 +121,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithSulfuras() {
         let input = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 10, quality: 80)]
         let expectedOutput = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 10, quality: 80)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -132,7 +129,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithSulfurasOnSellDate() {
         let input = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80)]
         let expectedOutput = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -140,7 +137,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithSulfurasAfterSellDate() {
         let input = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: -10, quality: 80)]
         let expectedOutput = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: -10, quality: 80)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -150,7 +147,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesLongBeforeSellDate() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 6)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -158,7 +155,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesLongBeforeSellDateAtMaxQuality() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 50)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 50)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -166,7 +163,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesBeforeSellDateUpperBound() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 7)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -174,7 +171,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesBeforeSellDateLowerBound() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 6, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 7)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -182,7 +179,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesJustBeforeSellDateUpperBound() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 8)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -190,7 +187,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesJustBeforeSellDateLowerBound() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 1, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 8)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -198,7 +195,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesOnSellDate() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -206,7 +203,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithPassesAfterSellDate() {
         let input = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 5)]
         let expectedOutput = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -2, quality: 0)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -216,7 +213,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithConjuredItem() {
         let input = [Item(name: "Conjured Mana Cake", sellIn: 5, quality: 5)]
         let expectedOutput = [Item(name: "Conjured Mana Cake", sellIn: 4, quality: 3)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -224,7 +221,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithConjuredItemAtLowQuality() {
         let input = [Item(name: "Conjured Mana Cake", sellIn: 5, quality: 1)]
         let expectedOutput = [Item(name: "Conjured Mana Cake", sellIn: 4, quality: 0)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -232,7 +229,7 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithConjuredItemOnSellDate() {
         let input = [Item(name: "Conjured Mana Cake", sellIn: 0, quality: 5)]
         let expectedOutput = [Item(name: "Conjured Mana Cake", sellIn: -1, quality: 1)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
@@ -240,9 +237,10 @@ class GildedRoseTests: XCTestCase {
     func testUpdateQuantityWithConjuredItemAfterSellDate() {
         let input = [Item(name: "Conjured Mana Cake", sellIn: -1, quality: 5)]
         let expectedOutput = [Item(name: "Conjured Mana Cake", sellIn: -2, quality: 1)]
-        let actualOutput = GildedRose.updateQuality(input)
+        let actualOutput = GildedRose.updateQuality(items : input)
         
         XCTAssertEqual(expectedOutput, actualOutput)
     }
     
 }
+
