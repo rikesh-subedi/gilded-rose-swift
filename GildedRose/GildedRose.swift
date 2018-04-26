@@ -13,7 +13,7 @@ protocol ItemController {
     init(item: Item)
 }
 
-class DefaultController: ItemController {
+class BaseController: ItemController {
     var item: Item
     
     required init(item: Item) {
@@ -33,66 +33,38 @@ class DefaultController: ItemController {
     }
 }
 
-class AgedBrieController : ItemController {
-    var item: Item
-    
-    required init(item: Item) {
-        self.item = item
-    }
-    func updateQuality() {
+class AgedBrieController : BaseController {
+    override func updateQuality() {
         if item.sellIn < 1 {
             item.quality = item.quality + 1
         }
         item.quality = item.quality + 1
         item.quality = item.quality > 50 ? 50 : item.quality
     }
-    
-    func updateSellin() {
-        self.item.sellIn = self.item.sellIn - 1
-    }
 }
 
-class SulfurasController: ItemController {
-    var item: Item
-    
-    required init(item: Item) {
-        self.item = item
-    }
-    func updateQuality() {
+class SulfurasController: BaseController {
+    override func updateQuality() {
         item.quality = item.quality + 0
     }
-    
-    func updateSellin() {
+    override func updateSellin() {
         item.sellIn = item.sellIn + 0
     }
 }
 
-class ConjuredController: ItemController {
-    var item: Item
+class ConjuredController: BaseController {
     
-    required init(item: Item) {
-        self.item = item
-    }
-    func updateQuality() {
+    override func updateQuality() {
         if(item.sellIn < 1){
             item.quality = item.quality - 2
         }
         item.quality = item.quality - 2
         item.quality = item.quality < 0 ? 0 : item.quality
     }
-    
-    func updateSellin() {
-        self.item.sellIn = self.item.sellIn - 1
-    }
 }
 
-class BackstagePassesController: ItemController {
-    var item: Item
-    
-    required init(item: Item) {
-        self.item = item
-    }
-    func updateQuality() {
+class BackstagePassesController: BaseController {
+    override func updateQuality() {
         if(item.sellIn < 1){
             item.quality = 0
         }
@@ -105,10 +77,6 @@ class BackstagePassesController: ItemController {
             item.quality = item.quality + 1
         }
         item.quality = item.quality > 50 ? 50 : item.quality
-    }
-    
-    func updateSellin() {
-        self.item.sellIn = self.item.sellIn - 1
     }
 }
 
@@ -124,7 +92,7 @@ class ControllerFactory {
         case "Conjured Mana Cake":
             return ConjuredController(item:item)
         default:
-            return DefaultController(item:item)
+            return BaseController(item:item)
         }
     }
 }
