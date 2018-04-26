@@ -14,7 +14,7 @@ public class GildedRose {
     public static func updateQuality(items: Array<Item>) -> [Item] {
         var items = items
         for i in 0 ..< items.count {
-            let controller = ControllerFactory.getController(item: items[i])
+            let controller = ControllerFactory().getController(item: items[i])
             controller.updateQuality()
             controller.updateSellin()
             items[i] = controller.item

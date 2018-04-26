@@ -8,7 +8,7 @@
 
 import Foundation
 class ControllerFactory {
-    public static func getController(item: Item) -> ItemController {
+    public func getController(item: Item) -> ItemController {
         switch item.name {
         case "Sulfuras, Hand of Ragnaros":
             return SulfurasController(item: item)
