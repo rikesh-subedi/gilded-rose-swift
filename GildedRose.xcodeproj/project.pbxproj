@@ -15,7 +15,7 @@
 		AF6F0A2E20918CA1004FFF78 /* BackstageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F0A2520918CA1004FFF78 /* BackstageController.swift */; };
 		AF6F0A2F20918CA1004FFF78 /* ConjuredController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F0A2620918CA1004FFF78 /* ConjuredController.swift */; };
 		AF6F0A3020918CA1004FFF78 /* SulfurasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F0A2720918CA1004FFF78 /* SulfurasController.swift */; };
-		AF6F0A3120918CA1004FFF78 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F0A2920918CA1004FFF78 /* ControllerFactory.swift */; };
+		AF6F0A3320918D81004FFF78 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F0A3220918D81004FFF78 /* ControllerFactory.swift */; };
 		E2F4C3161B956316003632EA /* GildedRose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F4C30B1B956315003632EA /* GildedRose.framework */; };
 		E2F4C31B1B956316003632EA /* GildedRoseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4C31A1B956316003632EA /* GildedRoseTests.swift */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		AF6F0A2520918CA1004FFF78 /* BackstageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackstageController.swift; sourceTree = "<group>"; };
 		AF6F0A2620918CA1004FFF78 /* ConjuredController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConjuredController.swift; sourceTree = "<group>"; };
 		AF6F0A2720918CA1004FFF78 /* SulfurasController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SulfurasController.swift; sourceTree = "<group>"; };
-		AF6F0A2920918CA1004FFF78 /* ControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
+		AF6F0A3220918D81004FFF78 /* ControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		E2F4C30B1B956315003632EA /* GildedRose.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GildedRose.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F4C3101B956315003632EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2F4C3151B956316003632EA /* GildedRoseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GildedRoseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +85,7 @@
 		AF6F0A2120918CA1004FFF78 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF6F0A3220918D81004FFF78 /* ControllerFactory.swift */,
 				AF6F0A2220918CA1004FFF78 /* AgedBrieController.swift */,
 				AF6F0A2320918CA1004FFF78 /* Controllerable.swift */,
 				AF6F0A2420918CA1004FFF78 /* BaseController.swift */,
@@ -95,19 +96,10 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		AF6F0A2820918CA1004FFF78 /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				AF6F0A2920918CA1004FFF78 /* ControllerFactory.swift */,
-			);
-			path = Factories;
-			sourceTree = "<group>";
-		};
 		E2F4C3011B956315003632EA = {
 			isa = PBXGroup;
 			children = (
 				AF6F0A2120918CA1004FFF78 /* Controllers */,
-				AF6F0A2820918CA1004FFF78 /* Factories */,
 				AF6F0A1F20918CA1004FFF78 /* Model */,
 				E2F4C30D1B956315003632EA /* GildedRose */,
 				E2F4C3191B956316003632EA /* GildedRoseTests */,
@@ -249,7 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6F0A3120918CA1004FFF78 /* ControllerFactory.swift in Sources */,
+				AF6F0A3320918D81004FFF78 /* ControllerFactory.swift in Sources */,
 				AF6F0A2A20918CA1004FFF78 /* Item.swift in Sources */,
 				AF6F0A2E20918CA1004FFF78 /* BackstageController.swift in Sources */,
 				AF6F0A2F20918CA1004FFF78 /* ConjuredController.swift in Sources */,
